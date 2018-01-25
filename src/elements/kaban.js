@@ -1,6 +1,6 @@
 phina.namespace(function () {
   phina.define('Kaban', {
-    superClass: 'DisplayElement',
+    superClass: 'phina.display.DisplayElement',
 
     init: function () {
       this.superInit();

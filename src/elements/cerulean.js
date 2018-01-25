@@ -1,7 +1,7 @@
 
 phina.namespace(function () {
   phina.define('Cerulean', {
-    superClass: 'DisplayElement',
+    superClass: 'phina.display.DisplayElement',
 
     init: function (param) {
       this.superInit();

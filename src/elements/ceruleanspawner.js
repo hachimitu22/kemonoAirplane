@@ -1,6 +1,6 @@
 phina.namespace(function () {
   phina.define('CeruleanSpawner', {
-    superClass: 'Element',
+    superClass: 'phina.app.Element',
 
     init: function () {
       this.superInit();
