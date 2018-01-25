@@ -9,10 +9,17 @@ kfap.DIRECTION = {};
 kfap.DIRECTION.RIGHT = 1;
 kfap.DIRECTION.LEFT = -1;
 
+var assetDir = (function () {
+  if (typeof isRunstant === 'undefined') {
+    return './assets/';
+  } else {
+    return 'https://rawgit.com/hachimitu22/kemonoAirplane/develop/assets/';
+  }
+})();
 var ASSETS = {
   image: {
-    "kaban2": 'https://rawgit.com/hachimitu22/kemonoAirplane/test/res/assets/img/kaban2.png',
-    "paperairplane2": 'https://rawgit.com/hachimitu22/kemonoAirplane/test/res/assets/img/paperairplane2.png',
+    "kaban2": assetDir + 'img/kaban2.png',
+    "paperairplane2": assetDir + 'img/paperairplane2.png',
   },
 };
 
