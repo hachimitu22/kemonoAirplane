@@ -21,6 +21,8 @@ phina.namespace(function () {
     },
 
     _attachFlickable: function () {
+      var self = this;
+
       this.flickable.vertical = false;
       this.flickable.horizontal = false;
       this.flickable.on('flickstart', function () {
