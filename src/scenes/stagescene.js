@@ -26,6 +26,13 @@ phina.namespace(function () {
       this.attackers = phina.display.DisplayElement().addChildTo(this);
       this.t = 0;
 
+      this.spawner.setSpawnParam({
+        'x': kfap.WIDTH_SIZE + 50,
+        'y': kfap.BASE_LINE - 20,
+        'parent': this.enemys,
+      });
+      this.spawner.setInterval(100);
+
       var self = this;
       var pauseButton = phina.ui.Button({
         text: 'ポーズ',
@@ -35,11 +42,11 @@ phina.namespace(function () {
         x: this.gridX.center(),
         y: this.gridY.center(),
       }).addChildTo(this);
-      
-      pauseButton.on('push', function(){
+
+      pauseButton.on('push', function () {
         self.app.pushScene(PauseScene());
       });
-  
+
     },
 
     update: function (app) {
@@ -50,14 +57,6 @@ phina.namespace(function () {
           // var shot = Shot(90, 255);
           // shot.addChildTo(this.attackers);
           // shot.takeoff(Math.randfloat(0, 10), Math.randfloat(-20, 0), 0.99, 0.2);
-        }
-        if (this.t >= 100) {
-          this.spawner.spawn({
-            'x': kfap.WIDTH_SIZE + 50,
-            'y': kfap.BASE_LINE - 20,
-            'parent': this.enemys,
-          });
-          this.t = 0;
         }
       }
 

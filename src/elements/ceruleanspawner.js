@@ -2,13 +2,33 @@ phina.namespace(function () {
   phina.define('CeruleanSpawner', {
     superClass: 'phina.app.Element',
 
-    init: function () {
+    init: function (spawnParam, interval) {
       this.superInit();
+
+      if (spawnParam) {
+        this.setSpawnParam(spawnParam);
+      }
+
+      if (interval) {
+        this.setInterval(interval);
+      } else {
+        this._interval = 0;
+        this._time = 0;
+      }
     },
 
+    setInterval: function (interval) {
+      this._interval = interval;
+      this._time = 0;
+    },
 
-    spawn: function (param) {
+    setSpawnParam: function (spawnParam) {
+      this._spawnParam = {}.$extend(spawnParam);
+    },
+
+    spawn: function (spawnParam) {
       var cerulean = Cerulean();
+      var param = spawnParam || this._spawnParam;
 
       if (param.parent) {
         cerulean.addChildTo(param.parent);
@@ -27,6 +47,17 @@ phina.namespace(function () {
         cerulean.scaleX *= param.direction;
       } else {
         cerulean.direction = 1;
+      }
+    },
+
+    update: function () {
+      if (this._interval) {
+        this._time++;
+
+        if (this._time >= this._interval) {
+          this.spawn();
+          this._time = 0;
+        }
       }
     }
 
